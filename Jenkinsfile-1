@@ -6,7 +6,8 @@ pipeline {
   stages {
     stage('Scan') {
       steps {
-            def scannerHome = tool 'SonarQubeScannner';
+      def scannerHome = tool 'SonarQubeScannner';
+      }
         withSonarQubeEnv(installationName: 'jenkins-sonar') { 
           bat '''echo "Absolute Folder "'''
           bat '''sonar-scanner -Dsonar.projectKey=python -Dsonar.sources=.'''
