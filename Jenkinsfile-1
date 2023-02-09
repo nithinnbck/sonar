@@ -3,13 +3,17 @@ pipeline {
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
-  stages {
-    stage('Scan') {
-      steps {
-        withSonarQubeEnv(installationName: 'jenkins-sonar') { 
-          sh "${scannerHome}/bin/sonar-scanner"
-        }
-      }
-    }
+stage('SonarQube analysis') {
+steps{
+  script {
+  def scannerHome = tool 'SonarQubeScannner';
   }
+  withSonarQubeEnv('jenkins-sonar') { // If you have configured more than one global server connection, you can specify its name
+    sh '''
+    echo "Absolute Folder Path="
+    '''
+    sh "sonar-scanner -Dsonar.projectKey=python -Dsonar.sources=."
+  }
+  }
+}
 }
