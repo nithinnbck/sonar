@@ -8,7 +8,7 @@ pipeline {
       steps {
         withSonarQubeEnv(installationName: 'jenkins-sonar') { 
           bat '''echo "Absolute Folder "'''
-          sh "sonar-scanner -Dsonar.projectKey=python -Dsonar.sources=src/main/java/com/example/demo"
+          sonar-scanner.bat -D"sonar.projectKey=python" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.login=sqp_e2ed735f9df0d006c964a29bac079dc1e43cc0df"
         }
       }
     }
