@@ -2,6 +2,7 @@
 
 '''Postfix evaluation'''
 def postfix_evaluation(st, n):
+    password =123
     '''Evaluates a Postfix Expression and returns the answer(an Integer).'''
 
     #Operand Stack - Only contains the Operands
